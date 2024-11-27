@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Notification</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="phone-screen" class="android-phone-screen">
+        <div id="status-bar">
+            <span id="operator">Orange</span>
+            <div class="signal-info">
+                <div class="container-signal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="network-signal-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-signal w-4 h-4"><path d="M2 20h.01"></path><path d="M7 20v-4"></path><path d="M12 20v-8"></path><path d="M17 20V8"></path><path d="M22 4v16"></path>
+                    </svg>
+                    <div class="network-signal-info">
+                        4G
+                    </div>
+                </div>
+                <div class="container-battery">
+                    <div>
+                        <img src="./assets/images/phone-icons/battery.png" alt="battery icon" class="battery-icon">
+                    </div>
+                    85%
+                </div>
+            </div>
+        </div>
+        <div id="time-date">
+            <div id="time">14:32</div>
+            <div id="date">lun. 23 octobre</div>
+        </div>
+        <div id="notifications" class="android">
+            <div class="notification android-notification-bg-color">
+                <img src="./assets/images/payment-processor/stripe-logo.png" alt="Stripe" class="notification-logo">
+                <div class="notification-content">
+                    <div class="notification-content-row">
+                        <div class="notification-title">Stripe</div>
+                        <div class="notification-time android-notification-time">il y a 8 minutes</div>
+                    </div>
+                    <div class="notification-body android-notification-body">Vous avez reçu un paiement de 9,99€ de exemple@mail.com</div>
+                </div>
+            </div>
+            <div class="notification android-notification-bg-color">
+                <img src="./assets/images/payment-processor/paypal-logo.png" alt="PayPal" class="notification-logo">
+                <div class="notification-content">
+                    <div class="notification-content-row">
+                        <div class="notification-title">PayPal</div>
+                        <div class="notification-time android-notification-time">il y a 12 minutes</div>
+                    </div>
+                    <div class="notification-body android-notification-body">Vous avez reçu un paiement de 19,99€ de autre@mail.com</div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-icons" class="android-footer-icons">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="micro-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mic w-5 h-5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+            </span>
+            <span><img src="./assets/images/phone-icons/lock.png" alt="Lock icon" class="android-lock-icon"></span>
+            <span><img src="./assets/images/phone-icons/camera.png" alt="Camera icon" class="android-camera-icon"></span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

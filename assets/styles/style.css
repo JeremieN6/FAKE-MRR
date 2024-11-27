@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+*{
+    font-family: "Roboto Flex", sans-serif;
+}
+.page{
+    display: flex;
+}
+.hidden {
+    display: none;
+}
+.container__phones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+#phone-screen {
+    width: 320px;
+    height: 600px;
+    background-color: #fff;
+    /* border-radius: 30px; */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.apple-phone-screen{
+    background-image: url(./assets/images/wallpapers/iphone-1.png);
+}
+.android-phone-screen{
+    background-image: url(./assets/images/wallpapers/android-1.jpg);
+}
+#status-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 14px;
+    color: #fff;
+    /* background-color: #e0e0e0; */
+}
+.signal-info{
+    display: flex;
+    gap: .5rem;
+}
+.network-signal-icon,
+.battery-icon{
+    width: 1rem;
+}
+.apple-network-signal-icon,
+.apple-battery-icon{
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.container-battery,
+.container-signal{
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: 12px;
+}
+#time-date {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+#time {
+    color: #fff;
+    font-size: 48px;
+}
+
+.apple-time{
+    font-weight: bold;
+}
+
+#date {
+    font-size: 18px;
+    color: #fff;
+}
+.content__label_notifications{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    color: #FFF;
+    font-weight: 400;
+}
+#notifications {
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#notifications .android {
+    margin-top: 30px;
+}
+
+#notifications .apple {
+    margin-top: 0px;
+}
+.content__remove-notifications,
+.rounded-container {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, .5);
+    backdrop-filter: blur(12px);
+    padding: 10px;
+}
+.close-notif{
+    color: #FFF;
+    width: 1rem;
+    height: 1rem;
+}
+.notification {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    /* border-bottom: 1px solid #ddd; */
+    border-radius: .5rem;
+    align-items: center;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+.android-notification-bg-color{
+    background-color: rgb(243 244 246);
+}
+.apple-notification-bg-color{
+    background-color: rgb(0, 0, 0, .5);
+    backdrop-filter: blur(12px);
+    /* opacity: .5; */
+    color: #FFF;
+}
+.notification-content-row {
+    display: flex;
+    justify-content: space-between;
+}
+.notification-logo {
+    width: 40px;
+}
+
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.notification-title {
+    font-weight: bold;
+    font-size: .75rem;
+}
+
+.notification-body {
+    font-size: .75rem;    
+}
+
+.android-notification-body{
+    color: #555;
+}
+.apple-notification-body{
+    color: #FFF;
+}
+.notification-time {
+    font-size: .75rem;
+}
+
+.android-notification-time{
+    color: #aaa;
+}
+.apple-notification-time{
+    color: #FFF;
+}
+#footer-icons {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    padding-bottom: .75rem;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.android-footer-icons{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.apple-footer-icons{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.micro-icon{
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #FFF;
+}
+.android-lock-icon,
+.android-camera-icon{
+    width: 16px;
+    height: 16px;
+}
+.apple-flash-light-icon{
+    width: 18px;
+    height: 18px;
+}
+.apple-camera-icon{
+    width: 18px;
+    height: 18px;
+}
+
+/* CONTROLS */
+#controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 320px;
+}
+
+#controls label {
+    font-weight: bold;
+}
+
+#controls input {
+    padding: 5px;
+    font-size: 14px;
+}
+.content__wallpapers{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.wallpaper-img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.container__email{
+    display: flex;
+    gap: 10px;
+}
+
+.masked {
+    background-color: #fff;
+    color: #fff;
+}
+/* CONTROLS */

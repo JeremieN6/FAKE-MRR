@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Notification</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="page">
+        <div id="phone-screen" class="android-phone-screen">
+            <div id="status-bar">
+                <span id="operator">{{ operator }}</span>
+                <div class="signal-info">
+                    <div class="container-signal">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="network-signal-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-signal w-4 h-4"><path d="M2 20h.01"></path><path d="M7 20v-4"></path><path d="M12 20v-8"></path><path d="M17 20V8"></path><path d="M22 4v16"></path>
+                        </svg>
+                        <div class="network-signal-info">
+                            4G
+                        </div>
+                    </div>
+                    <div class="container-battery">
+                        <div>
+                            <img src="./assets/images/phone-icons/battery.png" alt="battery icon" class="battery-icon">
+                        </div>
+                        85%
+                    </div>
+                </div>
+            </div>
+            <div id="time-date">
+                <div id="time">{{ time }}</div>
+                <div id="date">{{ formattedDate }}</div>
+            </div>
+            <div id="notifications" class="android">
+                <div v-for="(time, index) in notificationTimesFormatted" :key="index" class="notification android-notification-bg-color">
+                    <img id="payment-logo" :src="selectedProcessor.logo" alt="logo" class="notification-logo">
+                    <div class="notification-content">
+                        <div class="notification-content-row">
+                            <div id="notification-title" class="notification-title">{{ selectedProcessor.title }}</div>
+                            <div class="notification-time android-notification-time">{{ time }}</div>
+                        </div>
+                        <div class="notification-body android-notification-body">
+                            Vous avez reçu un paiement de {{ formattedAmount }} de {{ email || 'exemple@mail.com' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer icons -->
+            <div id="footer-icons" class="android-footer-icons">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="micro-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mic w-5 h-5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+                </span>
+                <span><img src="./assets/images/phone-icons/lock.png" alt="Lock icon" class="android-lock-icon"></span>
+                <span><img src="./assets/images/phone-icons/camera.png" alt="Camera icon" class="android-camera-icon"></span>
+            </div>
+        </div>
+
+        <div id="controls">
+            <label for="operator-input">Opérateur :</label>
+            <input type="text" id="operator-input" v-model="operator">
+
+            <label for="time-input">Heure :</label>
+            <input type="text" id="time-input" v-model="time" maxlength="5">
+
+            <label for="date-input">Date :</label>
+            <input type="date" id="date-input" v-model="date">
+
+            <label for="payment-processor">Choisissez un processeur de paiement :</label>
+            <select id="payment-processor" v-model="selectedProcessorKey">
+                <option v-for="(processor, key) in paymentProcessors" :value="key">{{ processor.title }}</option>
+            </select>
+
+            <label for="minutes-input">Minutes :</label>
+            <input type="number" id="minutes-input" v-model.number="notificationTime" min="1" max="59"/>
+
+            <label for="amount-input">Montant :</label>
+            <input type="number" id="amount-input" v-model.number="amount" placeholder="9,90€" step="0.01" @input="validateAmount" />
+
+            <label for="email-input">Email :</label>
+            <input type="text" id="email-input" v-model="email" placeholder="exemple@mail.com" />
+
+            <label for="notification-count">Nombre de notifications :</label>
+            <input type="number" id="notification-count" v-model.number="notificationCount" min="1" max="4"/>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="application/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                operator: 'Orange',
+                time: '14:32',
+                date: '',
+                amount: '',
+                email: '',
+                notificationCount: 1,
+                notificationTimes: [],
+                notificationTime: 18,
+                selectedProcessorKey: 'stripe',
+                paymentProcessors: {
+                    stripe: {
+                        title: "Stripe",
+                        logo: "./assets/images/payment-processor/stripe-logo.png"
+                    },
+                    paypal: {
+                        title: "PayPal",
+                        logo: "./assets/images/payment-processor/paypal-logo.png"
+                    }
+                }
+            },
+            computed: {
+                selectedProcessor() {
+                    return this.paymentProcessors[this.selectedProcessorKey];
+                },
+                formattedAmount() {
+                    return this.amount ? `${parseFloat(this.amount).toFixed(2)}€` : '9.90€';
+                },
+                notificationTimesFormatted() {
+                    return this.notificationTimes.map(minutes => minutes > 58 ? "il y a plus d'1h" : `il y a ${minutes} minutes`);
+                },
+                formattedDate() {
+                    return this.date ? new Date(this.date).toLocaleDateString("fr-FR", {
+                        weekday: 'long',
+                        day: 'numeric',
+                        month: 'long'
+                    }) : 'jeudi 31 octobre';
+                }
+            },
+            methods: {
+                validateAmount() {
+                    if (this.amount > 100001) {
+                        this.amount = 100001;
+                    }
+                },
+                generateNotificationTimes() {
+                    this.notificationTimes = Array.from({ length: this.notificationCount }, () => this.notificationTime);
+                }
+            },
+            watch: {
+                notificationCount: {
+                    immediate: true,
+                    handler() {
+                        this.generateNotificationTimes();
+                    }
+                },
+                notificationTime: {
+                    immediate: true,
+                    handler() {
+                        this.generateNotificationTimes();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

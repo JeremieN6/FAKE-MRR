@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Notification</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="phone-screen" class="apple-phone-screen">
+        <div id="status-bar">
+            <span id="operator">Free</span>
+            <div class="signal-info">
+                <div class="container-signal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="apple-network-signal-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi w-4 h-4"><path d="M12 20h.01"></path><path d="M2 8.82a15 15 0 0 1 20 0"></path><path d="M5 12.859a10 10 0 0 1 14 0"></path><path d="M8.5 16.429a5 5 0 0 1 7 0"></path></svg>
+                </div>
+                <div class="container-battery">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="apple-battery-icon" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white"><path d="M4.5 9.75a.75.75 0 00-.75.75V15c0 .414.336.75.75.75h6.75A.75.75 0 0012 15v-4.5a.75.75 0 00-.75-.75H4.5z"></path><path fill-rule="evenodd" d="M3.75 6.75a3 3 0 00-3 3v6a3 3 0 003 3h15a3 3 0 003-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 00-3-3h-15zm15 1.5a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5h-15a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h15z" clip-rule="evenodd"></path></svg>
+                </div>
+            </div>
+        </div>
+        <div id="time-date">
+            <div class="container__lock-icon">
+                <img src="./assets/images/phone-icons/lock.png" alt="Lock Icon" class="apple-lock-icon">
+            </div>
+            <div id="date">lun. 23 octobre</div>
+            <div id="time" class="apple-time">14:32</div>
+        </div>
+        <div class="apple container__label_notifications">
+            <div class="content__label_notifications">
+                <p class="notification">
+                    Notification Center
+                </p>
+                <div class="container__icon-remove-notifications">
+                    <div class="content__remove-notifications rounded-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x w-4 h-4 close-notif"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="notifications" class="apple">
+            <div class="notification apple-notification-bg-color">
+                <img id="payment-logo" src="./assets/images/payment-processor/stripe-logo.png" alt="Stripe" class="notification-logo">
+                <div class="notification-content">
+                    <div class="notification-content-row">
+                        <div id="notification-title" class="notification-title">Stripe</div>
+                        <div class="notification-time">il y a 8 minutes</div>
+                    </div>
+                    <div class="notification-body apple-notification-body">
+                        Vous avez reçu un paiement de <span id="formatted-amount">19,99€</span> de <span id="email-display">autre@mail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="notification apple-notification-bg-color">
+                <img src="./assets/images/payment-processor/paypal-logo.png" alt="PayPal" class="notification-logo">
+                <div class="notification-content">
+                    <div class="notification-content-row">
+                        <div class="notification-title">PayPal</div>
+                        <div class="notification-time">il y a 12 minutes</div>
+                    </div>
+                    <div class="notification-body apple-notification-body">
+                        Vous avez reçu un paiement de <span id="formatted-amount">19,99€</span> de <span id="email-display">autre@mail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-icons" class="apple-footer-icons">
+            <!-- <div class="rounded-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="micro-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mic w-5 h-5"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+            </div> -->
+            <div class="rounded-container"><img src="./assets/images/phone-icons/flashlight.png" alt="Flash light icon" class="apple-flash-light-icon"></div>
+            <div class="rounded-container"><img src="./assets/images/phone-icons/camera.png" alt="Camera icon" class="apple-camera-icon"></div>
+        </div>
+    </div>
+    <div id="controls">
+        <label for="operator-input">Opérateur :</label>
+        <input type="text" id="operator-input" value="Votre opérateur téléphonique">
+    
+        <label for="time-input">Heure :</label>
+        <input type="text" id="time-input" value="14:32" maxlength="5">
+    
+        <label for="date-input">Date :</label>
+        <input type="date" id="date-input" value="lun. 23 octobre">
+    
+        <!-- Menu déroulant dans les contrôles -->
+        <label for="payment-processor">Choisissez un processeur de paiement :</label>
+        <select id="payment-processor">
+            <option value="stripe">Stripe</option>
+            <option value="paypal">PayPal</option>
+            <!-- Ajouter d'autres processeurs de paiement ici si nécessaire -->
+        </select>
+
+        <label for="minutes-input">Minutes :</label>
+        <input type="number" id="minutes-input" min="1" max="59" value="8" />
+
+        <label for="amount-input">Montant :</label>
+        <input type="number" id="amount-input" placeholder="19,99€" step="0.01" maxlength="999999"/>
+
+        <label for="email-input">Email :</label>
+        <input type="text" id="email-input" placeholder="exemple@mail.com" />
+
+        <label for="email-input">Nombre de notification :</label>
+        <input type="number" id="notification-count" min="1" max="4"/>
+    
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
